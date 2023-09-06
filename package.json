@@ -1,4 +1,18 @@
 {
+  "name": "wall-of-fame",
+  "version": "1.0.0",
+  "description": "wesbite for you to write what you want",
+  "main": "index.js",
+  "scripts": {
+    "test": "testing",
+    "dev": "nodemon ./backend/index.js",
+    "start": "node ./backend/index.js"
+  },
+  "keywords": [
+    "social-media"
+  ],
+  "author": "syahinsyahryan",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5"
