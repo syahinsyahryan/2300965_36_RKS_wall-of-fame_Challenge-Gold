@@ -15,13 +15,22 @@ const initializeWall = async () => {
 };
 
 const generatorWall = (username, scribe) => `  
-<div class="card col p-3 card-section" id="${username}">
-  <div class="card-body">            
-    <p class="card-text">
+<div class="card col p-3 card-section position-relative" id="${username}">
+  <div class="card-body">
+  <div class="position-absolute top-0 end-0">
+  <button class="btn">
+  <i class="bi bi-pencil card-icon-title"></i> 
+  </button>    
+  <button class="btn">
+      <i class="bi bi-trash"></i>
+    </button>       
+  </div>  
+  <p class="card-text">
       ${scribe}
     </p>
 
-    <p class="card-text">${username} sribe this</p>
+    <p class="card-text">${username} scribe this</p>
+    
   </div>
 </div>`;
 
@@ -42,8 +51,16 @@ const initializeFame = async () => {
 };
 
 const generatorFame = (username, scribe) => `  
-<div class="card col p-3 card-section" id="sribe_${username}">
+<div class="card col p-3 card-section position-relative" id="scribe_${username}">
   <div class="card-body">
+  <div class="position-absolute top-0 end-0">
+  <button class="btn">
+  <i class="bi bi-pencil card-icon-title"></i> 
+  </button>    
+  <button class="btn">
+      <i class="bi bi-trash"></i>
+    </button>       
+  </div>  
       <p class="card-text">
         ${scribe}
       </p>
