@@ -3,8 +3,8 @@ class FeedModel {
 
   constructor() {
     this.feeds = [
-      { username: "doni cayank dhya", scribe: "doni was here" },
-      { username: "erik cinta qamue", scribe: "erik love qmue" },
+      { username: "doni", scribe: "ini adalah message doni" },
+      { username: "erik", scribe: "ini adalah tulisan erik " },
     ];
   }
   // CREATE untuk nambah produk baru ke keranjang

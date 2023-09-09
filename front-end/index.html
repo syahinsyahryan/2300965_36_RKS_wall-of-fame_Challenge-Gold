@@ -171,63 +171,13 @@
         <div class="display-5 mb-3 mt-3">
           <h1>Who Is Scribbling On The Wall</h1>
         </div>
-        <div
-          class="container px-4 text-center position-relative"
-          id="wall"
-        ></div>
+        <div class="container px-4 text-center" id="wall"></div>
       </div>
     </div>
     <!-- The Wall Home End -->
-
-    <!-- Wall of Fame start -->
-    <div class="card-section container-md text-center px-4">
-      <div class="display-5 mb-3 mt-3">
-        <h1>Wall of Fame</h1>
-      </div>
-      <div class="container px-4 text-center" id="fame"></div>
-    </div>
-    <!-- Wall of fame end -->
   </body>
-  <script src="initialize.js"></script>
+  <script src="script.js"></script>
   <script>
     initializeWall();
-    initializeFame();
-
-    const handleSend = async () => {
-      console.log("handle send berhasil");
-      const usernameInput = document.getElementById("username-input");
-      const scribeInput = document.getElementById("scribe-input");
-      const reqBody = {
-        username: usernameInput.value,
-        scribe: scribeInput.value,
-      };
-      console.log({ scribeInput });
-      console.log(usernameInput);
-      const body = JSON.stringify(reqBody);
-
-      var headers = new Headers();
-      headers.append("Content-Type", "application/json");
-
-      const requestOptions = {
-        method: "POST",
-        headers,
-        body,
-      };
-
-      const resp = await fetch(
-        "http://localhost:9000/api/v1/home/feed/add",
-        requestOptions
-      );
-      console.log({ resp });
-      const respJson = await resp.json();
-
-      console.log(respJson.data);
-      const contentWrapper = document.querySelector("#content");
-
-      contentWrapper.innerHTML += generatorHtml(
-        respJson.data.name,
-        respJson.data.link
-      );
-    };
   </script>
 </html>
