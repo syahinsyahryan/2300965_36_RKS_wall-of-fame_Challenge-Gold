@@ -1,50 +1,50 @@
+const knex = require("../config/knex");
+const db = require("../config/knex");
 class FeedModel {
   feeds = [];
 
-  constructor() {
-    this.feeds = [
-      { username: "doni", scribe: "ini adalah message doni" },
-      { username: "erik", scribe: "ini adalah tulisan erik " },
-    ];
-  }
+  constructor() {}
+
   // CREATE untuk nambah produk baru ke keranjang
-  insert(username, scribe) {
+  async insert(username, scribe) {
     const newScribe = { username, scribe };
     this.feeds.push(newScribe);
+    await db(this.tableName).insert(newScribe);
     return newScribe;
   }
   // end
 
   // READ semua produk di keranjang
-  findAll() {
-    return this.feeds;
+  async findAll() {
+    return await db(this.tableName).select("*");
   }
   // end
 
   // DELETE username di keranjang
-  delete(username) {
-    const deleteScribe = this.feeds.find(
-      (value) => value.username === username
-    );
-    if (!deleteScribe) return;
+  async delete(username) {
+    const findScribe = await db(this.tableName)
+      .where("username", username)
+      .first();
+    if (!findScribe?.id) throw new Error("data tidak ada");
 
-    this.feeds = this.feeds.filter((value) => value.username !== username);
-    return deleteScribe;
+    await db(this.tableName).where("username", username).del();
+    return findScribe;
   }
   // end
 
   // UPDATE edit produk yang sudah ada (custom username)
-  edit(username, newUsername, newScribe) {
-    const finnedProductIndex = this.feeds.findIndex(
-      (value) => value.username === username
-    );
-    if (finnedProductIndex < 0) return;
-    const editedProduct = {
-      username: newUsername || this.feeds[finnedProductIndex].username,
-      scribe: newScribe || this.feeds[finnedProductIndex].scribe,
+  async edit(username, scribe) {
+    const existingFeed = await db(this.tableName)
+      .where("username", username)
+      .first();
+    if (!existingFeed?.id) throw new Error("data tidak ada");
+
+    const editedFeed = {
+      username: existingFeed.username,
+      scribe: scribe || existingFeed.scribe,
     };
-    this.feeds[finnedProductIndex] = editedProduct;
-    return editedProduct;
+    await db(this.tableName).update(editedFeed).where("username", username);
+    return editedFeed;
   }
   // end
 }

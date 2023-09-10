@@ -127,6 +127,68 @@
     </nav>
     <!-- Navbar End -->
 
+    <!-- modal start -->
+    <div
+      class="modal fade"
+      id="edit-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Scribe edit</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                name="username"
+                class="form-control"
+                id="edit-username-input"
+                placeholder="just type any username you like"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="scribe" class="form-label">Edit this scribe</label>
+              <input
+                name="scribe"
+                class="form-control"
+                id="edit-scribe-input"
+                placeholder="scribe what's on your mind"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              id="update-button"
+              type="button"
+              class="btn btn-primary"
+              onclick="handleEdit('${username}')"
+            >
+              Overwrite the scribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal end -->
+
     <!-- input form start -->
     <form class="mt-5 pt-3">
       <div class="container input-section">

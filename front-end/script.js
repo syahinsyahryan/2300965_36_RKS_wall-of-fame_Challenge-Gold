@@ -19,7 +19,7 @@ const generatorWall = (username, scribe) => `
 <div class="card col p-3 card-section position-relative" id="${username}">
   
   <div class="position-absolute top-0 end-0">
-  <button class="btn" onclick="handleEdit(this)" data-bs-toggle="modal" data-bs-target="#form">
+  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#edit-modal">
   <i class="bi bi-pencil card-icon-title"></i> 
   </button>    
   <button class="btn" onclick="handleDelete('${username}')">
@@ -30,7 +30,7 @@ const generatorWall = (username, scribe) => `
       ${scribe}
     </p>
 
-    <p class="card-text">${username} scribe this</p>
+    <p class="card-text"><b>${username}</b> scribe this</p>
     
   
 </div>`;
@@ -73,6 +73,7 @@ const handleSend = async () => {
   );
 };
 
+// function to delete post
 async function handleDelete(username) {
   try {
     const response = await fetch(
@@ -86,5 +87,39 @@ async function handleDelete(username) {
     }
   } catch (error) {
     console.error("Error deleting student:", error);
+  }
+}
+
+// function to edit post
+async function handleEdit(username) {
+  const newUsernameInput = document.getElementById("edit-username-input");
+  const newScribeInput = document.getElementById("edit-scribe-input");
+
+  const newUsername = newUsernameInput.value;
+  const newScribe = newScribeInput.value;
+
+  console.log(newUsername);
+  if (newUsername && newScribe) {
+    try {
+      const response = await fetch(
+        `http://localhost:9000/api/v1/home/feed/edit/${username}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: newUsername,
+            scribe: newScribe,
+          }),
+        }
+      );
+      console.log(username.value);
+      if (response.ok) {
+        initializeWall();
+      }
+    } catch (error) {
+      console.error("Error editing student:", error);
+    }
   }
 }
