@@ -5,7 +5,7 @@ const FeedModel = require("../models/feed.model");
 const models = new FeedModel();
 
 // // Function READ/lihat semua produk di keranjang
-export const getFeeds = async (_, res) => {
+const getFeeds = async (_, res) => {
   const feeds = models.findAll();
   const data = { feeds, total: feeds.length };
   return res
@@ -14,7 +14,7 @@ export const getFeeds = async (_, res) => {
 };
 
 // // function CREATE/ADD username to feed
-export const addFeed = async (req, res) => {
+const addFeed = async (req, res) => {
   const body = req.body;
   if (!body.username)
     return res.status(401).json(responseError("Product name required"));
@@ -27,7 +27,7 @@ export const addFeed = async (req, res) => {
 };
 
 // // Function UPDATE/Edit custom username
-export const feedEdit = async (req, res) => {
+const feedEdit = async (req, res) => {
   const username = req.params["username"];
   const body = req.body;
   const data = models.edit(username, body.username, body.scribe);
@@ -35,7 +35,7 @@ export const feedEdit = async (req, res) => {
 };
 
 // // Function DELETE username
-export const feedDelete = async (req, res) => {
+const feedDelete = async (req, res) => {
   const username = req.params["username"];
   const data = models.delete(username);
   if (!username)

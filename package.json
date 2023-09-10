@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "testing",
-    "dev": "nodemon ./backend/index.js",
-    "start1": "node ./backend/index.js",
-    "launch": "npx live-server ./front-end/index.html"
+    "dev": "nodemon ./backend/index.js"
+    
   },
   "keywords": [
     "social-media"

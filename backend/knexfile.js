@@ -4,7 +4,7 @@ module.exports = {
     client: "pg",
     connection: process.env.DATABASE_URL || {
       host: "localhost",
-      user: "ryanks",
+      user: "ryannks",
       password: "456123789",
       database: "thewall_db",
     },
