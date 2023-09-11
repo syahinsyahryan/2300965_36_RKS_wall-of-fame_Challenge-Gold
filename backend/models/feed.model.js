@@ -1,7 +1,8 @@
 const knex = require("../config/knex");
 const db = require("../config/knex");
+
 class FeedModel {
-  feeds = [];
+  tableName = "feeds";
 
   constructor() {}
 

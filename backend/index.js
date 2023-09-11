@@ -7,7 +7,7 @@ const cors = require("cors");
 // variabel untuk manggil morgan dan bodyparser/untuk menentukan data apa yg dikirim
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-
+app.use(express.json());
 // port di masukin ke variabel supaya dinamis
 const PORT = 9000;
 
@@ -21,8 +21,8 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 
 // Fitur Link Tree;
-const carts = require("./views/feed.view");
-app.use(carts);
+const feeds = require("./views/feed.view");
+app.use(feeds);
 
 // untuk monitor apakah server sudah berjalan atau belum
 app.listen(PORT, () => {
