@@ -9,7 +9,7 @@ the idea come from childhood memories where grafiti is booming back in the day. 
 ## Features
 
 - **View Scribing:** view the scribe that already been made by other user
-- **Write a Scribe:** Write the scribe, you can write anything you want on the wall -**Delete Scribe:** Delete scribe on the wall -**Edit Scribe:** Edit Scribe in the wall
+- **Write a Scribe:** Write the scribe, you can write anything you want on the wall -**Delete Scribe:** Delete scribe on the wall -**Edit Scribe:** Edit Scribe in the wall -**navbar is non functional at this time**
 
 ## Getting Started
 

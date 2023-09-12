@@ -19,21 +19,21 @@ const initializeWall = async () => {
 const generatorWall = (username, scribe) => `  
 <div class="card col p-3 card-section position-relative" id="${username}">
   
-  <div class="position-absolute top-0 end-0">
-  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#edit-modal">
-  <i class="bi bi-pencil card-icon-title"></i> 
-  </button>    
-  <button class="btn" onclick="handleDelete('${username}')">
-      <i class="bi bi-trash"></i>
-    </button>       
-  </div>  
-  <p class="card-text">
-      ${scribe}
-    </p>
+<p class="card-text">
+${scribe}
+</p>
 
-    <p class="card-text"><b>${username}</b> scribe this</p>
-    
-  
+<p class="card-text"><b>${username}</b> scribe this</p>
+
+<div>
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#edit-modal">
+<i class="bi bi-pencil card-icon-title"></i> 
+</button>    
+<button class="btn" onclick="handleDelete('${username}')">
+    <i class="bi bi-trash"></i>
+  </button>       
+</div>  
+
 </div>`;
 
 // function to submit form
