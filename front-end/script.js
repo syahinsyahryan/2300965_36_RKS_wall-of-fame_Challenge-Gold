@@ -4,10 +4,11 @@ wallWrapper.innerHTML = `<h1>Loading....</h1>`;
 const initializeWall = async () => {
   const resp = await fetch("http://localhost:9000/api/v1/home/feed/wall");
   const jsonResp = await resp.json();
-  const feeds = jsonResp.data;
+  const feeds = jsonResp.data.feeds;
+  console.log(feeds);
 
   wallWrapper.innerHTML = "";
-  console.log(feeds);
+
   feeds.forEach((feed) => {
     const scribeInfo = generatorWall(feed.username, feed.scribe);
 

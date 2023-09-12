@@ -1,8 +1,7 @@
 const express = require("express");
-const router = express.Router();
 const controller = require("../controllers/feed.controller");
-
 const prefixPath = "api/v1/home/feed";
+const router = express.Router();
 
 router.get(`/${prefixPath}/wall`, controller.getFeeds);
 router.post(`/${prefixPath}/add`, controller.addFeed);
