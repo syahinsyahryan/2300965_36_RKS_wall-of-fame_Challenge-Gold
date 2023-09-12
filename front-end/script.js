@@ -3,8 +3,8 @@ wallWrapper.innerHTML = `<h1>Loading....</h1>`;
 // Function to fetc and display data
 const initializeWall = async () => {
   const resp = await fetch("http://localhost:9000/api/v1/home/feed/wall");
-  const jsonResp = await resp.json();
-  const feeds = jsonResp.data.feeds;
+  const feeds = await resp.json();
+
   console.log(feeds);
 
   wallWrapper.innerHTML = "";
@@ -100,6 +100,7 @@ async function handleEdit(username) {
   const newScribe = newScribeInput.value;
 
   console.log(newUsername);
+  console.log(newScribe);
   if (newUsername && newScribe) {
     try {
       const response = await fetch(
@@ -109,10 +110,10 @@ async function handleEdit(username) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
+          body: {
             username: newUsername,
             scribe: newScribe,
-          }),
+          },
         }
       );
       console.log(username.value);
